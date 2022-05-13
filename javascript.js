@@ -13,9 +13,21 @@ let computerSelection = computerPlay()
 let playerSelection = prompt("Try it out").toLowerCase()
 
 function playRound(playerSelection, computerSelection) {
-    computer = computerSelection
-    playerSelection = playerSelection
-    console.log(computer)
+    if(playerSelection == "paper" && computerSelection == "scissors") {
+        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... computer wins!`)
+    } else if(playerSelection == "rock" && computerSelection == "paper") {
+        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... computer wins!`)
+    } else if(playerSelection == "scissors" && computerSelection == "rock") {
+        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... computer wins!`)
+    } if(playerSelection == "paper" && computerSelection == "rock") {
+        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... you won!`)
+    } else if(playerSelection == "rock" && computerSelection == "scissors") {
+        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... you won!`)
+    } else if(playerSelection == "scissors" && computerSelection == "paper") {
+        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... you won!`)
+    } else {
+        console.log("It's a draw!")
+    }
 }
 
 function game(){
