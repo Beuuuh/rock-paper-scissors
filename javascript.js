@@ -9,8 +9,8 @@ function computerPlay() {
     }
 }
 
-let computerSelection = computerPlay()
-let playerSelection = prompt("Try it out").toLowerCase()
+let computerSelection
+let playerSelection
 
 function playRound(playerSelection, computerSelection) {
     if(playerSelection == "paper" && computerSelection == "scissors") {
@@ -25,13 +25,17 @@ function playRound(playerSelection, computerSelection) {
         console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... you won!`)
     } else if(playerSelection == "scissors" && computerSelection == "paper") {
         console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... you won!`)
-    } else {
+    } else if(playerSelection == computerSelection) {
         console.log("It's a draw!")
     }
 }
 
-function game(){
+function game() {
     for(i = 0; i < 5; i++) {
-        playRound()
+        computerSelection = computerPlay()
+        playerSelection = prompt("Try it out").toLowerCase()
+        playRound(playerSelection, computerSelection)
     }
 }
+
+game();
