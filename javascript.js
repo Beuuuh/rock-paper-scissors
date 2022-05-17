@@ -13,7 +13,6 @@ let computerSelection
 let playerSelection
 let playerWins = 0
 let computerWins = 0
-let tiebreaker = 0
 
 function playRound(playerSelection, computerSelection) {
     // checks every possibility
@@ -37,7 +36,6 @@ function playRound(playerSelection, computerSelection) {
         playerWins++
     } else if(playerSelection == computerSelection) {
         console.log("It's a draw!")
-        tiebreaker++
     }
 }
 
