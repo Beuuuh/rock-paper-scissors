@@ -39,23 +39,10 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for(i = 0; i < 5; i++) {
-        computerSelection = computerPlay()
-        playerSelection = prompt("Try it out").toLowerCase()
-        playRound(playerSelection, computerSelection)
-        if(i == 5 && playerWins > computerWins) {
-            console.log("YOU WON THE GAME!")
-        } else if(i == 5 && playerWins < computerWins) {
-            console.log("You lost the game!")
-        } else {
-            while(playerWins == computerWins) {
-                computerSelection = computerPlay()
-                playerSelection = prompt("Try it out").toLowerCase()
-                playRound(playerSelection, computerSelection)
-            }
-        }
-    }
-}
+let rock = document.querySelector(".Rock")
+let scissors = document.querySelector(".Scissors")
+let paper = document.querySelector(".Paper")
 
-game();
+rock.addEventListener("click", playRound(rock, computerSelection))
+scissors.addEventListener("click", playRound(scissors, computerSelection))
+paper.addEventListener("click", playRound(paper, computerSelection))
