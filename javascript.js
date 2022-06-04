@@ -42,15 +42,28 @@ function playRound(playerSelection, computerSelection) {
 const rock = document.querySelector("#rock");
 const scissors = document.querySelector("#scissors");
 const paper = document.querySelector("#paper");
+const resultsDiv = document.createElement("div");
+const content = document.createElement("h1");
+
+resultsDiv.setAttribute("id", "results");
+content.classList.add("content");
+content.textContent = `Player score: ${playerWins} X Artificial intelligence score: ${computerWins}`;
+resultsDiv.appendChild(content);
 
 rock.addEventListener("click", () => {
     playerSelection = "rock";
+    computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
 });
 
 paper.addEventListener("click", () => {
     playerSelection = "paper";
+    computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
 });
 
 scissors.addEventListener("click", () => {
     playerSelection = "scissors";
+    computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
 });
