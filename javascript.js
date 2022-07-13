@@ -42,13 +42,8 @@ function playRound(playerSelection, computerSelection) {
 const rock = document.querySelector("#rock");
 const scissors = document.querySelector("#scissors");
 const paper = document.querySelector("#paper");
-const resultsDiv = document.createElement("div");
-const content = document.createElement("h1");
-
-resultsDiv.setAttribute("id", "results");
-content.classList.add("content");
-content.textContent = `Player score: ${playerWins} X Artificial intelligence score: ${computerWins}`;
-resultsDiv.appendChild(content);
+const playerLabel = document.getElementById("playerLabel");
+const computerLabel = document.getElementById("computerLabel");
 
 rock.addEventListener("click", () => {
     playerSelection = "rock";
@@ -67,3 +62,11 @@ scissors.addEventListener("click", () => {
     computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
 });
+
+playerLabel.innerText = "Player score: " + playerWins;
+computerLabel.innerText = "Computer score: " + computerWins;
+
+if(playerWins < 5) {
+    playerLabel.innerText = "Player score: " + playerWins;
+    computerLabel.innerText = "Computer score: " + computerWins;
+}
