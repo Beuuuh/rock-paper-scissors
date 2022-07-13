@@ -1,3 +1,31 @@
+//GAME
+
+let computerSelection;
+let playerSelection;
+let playerWins = 0;
+let computerWins = 0;
+let roundWinner = "";
+
+function playRound(playerSelection, computerSelection) {
+    // checks every possibility
+    if (playerSelection == computerSelection) {
+        roundWinner = 'tie';
+    };
+    if ((playerSelection == 'rock' && computerSelection === 'scissors') ||
+        (playerSelection == 'scissors' && computerSelection === 'paper') ||
+        (playerSelection == 'paper' && computerSelection === 'rock')) {
+        playerWins++;
+        roundWinner = 'player';
+    };
+    if ((computerSelection == 'rock' && playerSelection === 'scissors') ||
+        (computerSelection == 'scissors' && playerSelection === 'paper') ||
+        (computerSelection == 'paper' && playerSelection === 'rock')) {
+        computerWins++;
+        roundWinner = 'computer';
+    };
+    updateScore();
+};
+
 function computerPlay() {
     let selector = Math.random()
     if(selector <= 0.3) {
@@ -9,41 +37,13 @@ function computerPlay() {
     };
 };
 
-let computerSelection;
-let playerSelection;
-let playerWins = 0;
-let computerWins = 0;
-
-function playRound(playerSelection, computerSelection) {
-    // checks every possibility
-    if(playerSelection == "paper" && computerSelection == "scissors") {
-        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... computer wins!`);
-        computerWins++;
-    } else if(playerSelection == "rock" && computerSelection == "paper") {
-        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... computer wins!`);
-        computerWins++;
-    } else if(playerSelection == "scissors" && computerSelection == "rock") {
-        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... computer wins!`);
-        computerWins++;
-    } if(playerSelection == "paper" && computerSelection == "rock") {
-        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... you won!`);
-        playerWins++;
-    } else if(playerSelection == "rock" && computerSelection == "scissors") {
-        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... you won!`);
-        playerWins++;
-    } else if(playerSelection == "scissors" && computerSelection == "paper") {
-        console.log(`You have put ${playerSelection} and computer have put ${computerSelection}... you won!`);
-        playerWins++;
-    } else if(playerSelection == computerSelection) {
-        console.log("It's a draw!");
-    };
-};
 
 const rock = document.querySelector("#rock");
 const scissors = document.querySelector("#scissors");
 const paper = document.querySelector("#paper");
-const playerLabel = document.getElementById("playerLabel");
-const computerLabel = document.getElementById("computerLabel");
+let playerLabel = document.getElementById("playerLabel");
+let computerLabel = document.getElementById("computerLabel");
+let tieWinLost = document.getElementById("twl");
 
 rock.addEventListener("click", () => {
     playerSelection = "rock";
@@ -63,10 +63,23 @@ scissors.addEventListener("click", () => {
     playRound(playerSelection, computerSelection);
 });
 
-playerLabel.innerText = "Player score: " + playerWins;
-computerLabel.innerText = "Computer score: " + computerWins;
-
-if(playerWins < 5) {
-    playerLabel.innerText = "Player score: " + playerWins;
-    computerLabel.innerText = "Computer score: " + computerWins;
-}
+function updateScore() {
+    if(roundWinner == "tie") {
+        tieWinLost.textContent = "Tie!";
+        playerLabel.textContent = `Player score: ${playerWins}`;
+        computerLabel.textContent = `Computer score ${computerWins}`;
+        console.log("Tie");
+    }; 
+    if(roundWinner == "player") {
+       tieWinLost.textContent = "You have WON!";
+       playerLabel.textContent = `Player score: ${playerWins}`;
+       computerLabel.textContent = `Computer score ${computerWins}`;
+       console.log("player won");
+    };  
+    if(roundWinner == "computer") {
+        tieWinLost.textContent = "You have LOST!";
+        playerLabel.textContent = `Player score: ${playerWins}`;
+        computerLabel.textContent = `Computer score ${computerWins}`;
+        console.log("computer won");
+    };
+};
