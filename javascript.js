@@ -28,12 +28,16 @@ function playRound(playerSelection, computerSelection) {
 
 function computerPlay() {
     let selector = Math.random()
-    if(selector <= 0.3) {
-        return "rock";
-    } else if(selector <= 0.6) {
-        return "paper";
+    if(playerWins != 5) {    
+        if(selector <= 0.3) {
+            return "rock";
+        } else if(selector <= 0.6) {
+            return "paper";
+        } else {
+            return "scissors";
+        };
     } else {
-        return "scissors";
+        return null
     };
 };
 
@@ -81,5 +85,10 @@ function updateScore() {
         playerLabel.textContent = `Player score: ${playerWins}`;
         computerLabel.textContent = `Computer score ${computerWins}`;
         console.log("computer won");
+    };
+    if(playerWins == 5 && computerWins < 5) {
+        window.alert("Congrats! You've won, press f5 or click in the refresh button to refresh the page!");
+    } else if(computerWins == 5 && playerWins < 5) {
+        window.alert("OH NO! You've lost, press f5 or click in the refresh button to refresh the page!");
     };
 };

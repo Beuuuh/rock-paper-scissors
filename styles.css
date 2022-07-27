@@ -1,0 +1,47 @@
+body {
+    background-color: #F2F2F2;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.header {
+    text-align: center;
+    padding: 100px;
+    background-color: #044040;
+    color: #F2F2F2;
+    font-size: 20px;
+}
+
+.resultsDiv {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#twl {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.buttons {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.buttons button {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+}
